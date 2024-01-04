@@ -22,8 +22,9 @@ const customLevels = {
 
 export let logger 
     
-if(config.environment === 'prod'){
-    logger= winston.createLogger({
+if (config.environment === 'prod') {
+    console.log("Iniciando como prod");
+    logger = winston.createLogger({
         levels: customLevels.levels,
         transports: [
             new winston.transports.File({
@@ -38,11 +39,27 @@ if(config.environment === 'prod'){
                 )
             })
         ]
-    })
-}
-
-if(config.environment === 'dev'){
-    logger= winston.createLogger({
+    });
+} else if (config.environment === 'dev') {
+    console.log("Iniciando como dev");
+    logger = winston.createLogger({
+        levels: customLevels.levels,
+        transports: [
+            new winston.transports.Console({
+                level: 'debug',
+                format: winston.format.combine(
+                    winston.format.colorize({colors: customLevels.colors}),
+                    winston.format.timestamp({
+                        format: 'hh:mm A DD-MM-YYYY'
+                    }),
+                    winston.format.simple(),
+                )
+            }),
+        ]
+    });
+} else if (config.environment === 'test') {
+    console.log("Iniciando como test");
+    logger = winston.createLogger({
         levels: customLevels.levels,
         transports: [
             new winston.transports.Console({
@@ -57,4 +74,11 @@ if(config.environment === 'dev'){
             }),
         ]
     })
+}else {
+    console.log("Entorno no reconocido. Iniciando con configuración predeterminada.");
+    logger = winston.createLogger({
+        levels: customLevels.levels,
+        transports: [
+        ]
+    });
 }

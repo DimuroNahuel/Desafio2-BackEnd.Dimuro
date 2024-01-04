@@ -93,3 +93,18 @@
   level: 'info',
   timestamp: '08:26 PM 17-12-2023'
 }
+{
+  message: 'Escuchando al puerto 8080',
+  level: 'info',
+  timestamp: '09:12 PM 30-12-2023'
+}
+{
+  message: 'Escuchando al puerto 8080',
+  level: 'info',
+  timestamp: '09:13 PM 30-12-2023'
+}
+{
+  message: 'Connected to DB',
+  level: 'info',
+  timestamp: '09:13 PM 30-12-2023'
+}

@@ -12,6 +12,7 @@
         <th>Código</th>
         <th>Imagen</th>
         <th>Precio</th>
+        <th>Disponibles</th>
         <th>Cantidad</th>
     </tr>
         {{#each products.payload}}
@@ -21,6 +22,7 @@
             <td>{{code}}</td>
             <td>{{thumbnail}}</td>
             <td>{{price}}</td>
+            <td>{{stock}}</td>
             <form id="formHeader" method="POST" action="/api/carts/{{cid}}/product/{{id}}">
                 <td><input type="number" name="quantity" min="1" max="{{stock}}"></td>
                 <td><button type="submit">Añadir al carrito</button></td>
@@ -30,10 +32,10 @@
 </table>
 
 <p>Resultados: {{products.payload.length}}</p>
-<a href="{{products.prevLink}}">Página {{products.prevPage}}  </a>
+<a href="{{products.prevLink}}">Página Anterior {{products.prevPage}}  </a>
 <p>Página {{products.page}}</p>
 <br>
-<a href="{{products.nextLink}}">Página {{products.nextPage}}  </a>
+<a href="{{products.nextLink}}">Página Siguiente{{products.nextPage}}  </a>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/js/products.js"></script>
