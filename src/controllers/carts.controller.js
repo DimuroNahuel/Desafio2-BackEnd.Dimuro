@@ -2,7 +2,6 @@ import {
     getById, 
     newCart, 
     addProductToCart, 
-    updateProductFromCart, 
     updateQuantity, 
     deleteOneProductFromCart, 
     cleanCart, 
@@ -105,24 +104,6 @@ export const newPurchase = async (req, res) => {
         }
     } catch (error) {
         res.status(500).json({message: error.message})
-    }
-}
-
-export const updateCart = async (req, res) => {
-    const {cid} = req.params
-    try{
-        const updatedProducts = await cartsManager.updateProductFromCart(cid, req.body);
-        if (updatedProducts === -1) {
-            CustomizedError.currentError(errorMessages.CANT_UPDATE_CART)
-        } else {
-            res.status(200).json({
-                message: 'Carrito actualizado',
-                products: updatedProducts,
-            });
-        }
-    }
-    catch (error){
-        res.status(500).json({mesage: error.message})
     }
 }
 
