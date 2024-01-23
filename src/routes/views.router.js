@@ -23,6 +23,7 @@ router.get('/mockingproducts', mockProducts)
 router.get('/loggerTest', loggerTest)
 
 router.get('/newpassword/:email', newPassword)
+
 router.get('/manageProducts', manageProducts)
 
 export default router
